@@ -1,0 +1,14 @@
+#Filtrado de tabla en formato .xlsx, pero en Calc (LibreOffice), porque Excel no tolera tantos parámetros en las funciones. Primer filtrado de cada columna (el código trabaja a partir de la celda A2, ahí debe estar el primer nivel taxonómico a filtrar) eliminando prefijos del nivel taxonómico correspondiente y códigos inespecíficos en esos niveles.
+=SI((SI.ERROR(HALLAR("unidentified",A2),0))O(SI.ERROR(HALLAR("uncultur",A2),0))O(SI.ERROR(HALLAR("unknown",A2),0))O(SI.ERROR(HALLAR("incertae",A2),0))O(SI.ERROR(HALLAR("metagenom",A2),0))O(SI.ERROR(HALLAR("group",A2),0))O(SI.ERROR(HALLAR("IMCC",A2),0))O(SI.ERROR(HALLAR("GW",A2),0))O(SI.ERROR(HALLAR("-",A2),0))O(SI.ERROR(HALLAR(".",A2),0))O(SI.ERROR(HALLAR("WW",A2),0))O(SI.ERROR(HALLAR("SBR",A2),0))O(SI.ERROR(HALLAR("OLB",A2),0))O(SI.ERROR(HALLAR("FFCH",A2),0))O(SI.ERROR(HALLAR("clade",A2),0))O(SI.ERROR(HALLAR("lineage",A2),0))O(SI.ERROR(HALLAR("0",A2),0))O(SI.ERROR(HALLAR("1",A2),0))O(SI.ERROR(HALLAR("2",A2),0))O(SI.ERROR(HALLAR("3",A2),0))O(SI.ERROR(HALLAR("4",A2),0))O(SI.ERROR(HALLAR("5",A2),0))O(SI.ERROR(HALLAR("6",A2),0))O(SI.ERROR(HALLAR("7",A2),0))O(SI.ERROR(HALLAR("8",A2),0))O(SI.ERROR(HALLAR("9",A2),0)),"",MID(A2,4,50))
+
+#Compara las últimas dos columnas, donde están Género y Especie, de esta manera podemos escoger si le corresponde "Unid_", "_sp" o celda vacía, si es un nivel taxonómico superior al que vamos a analizar, si es solo el género sin especie o es la especie, respectivamente.
+=SI((LARGO(N2)>0),"",(SI((LARGO(M2)>0),"_sp","Unid_")))
+
+#Seleccionamos el último nivel taxonómico disponible, partiendo de las columnas de género y especie hacía “arriba”, hasta Orden.
+=SI(LARGO(SI((LARGO(N2)>0),(SI(SI.ERROR(ENCONTRAR("_",N2),0)>1,N2,(M2&"_"&N2))),(SI((LARGO(M2)>0),(M2),L2))))>0,(SI((LARGO(N2)>0),(SI(SI.ERROR(ENCONTRAR("_",N2),0)>1,N2,(M2&"_"&N2))),(SI((LARGO(M2)>0),(M2),L2)))),K2)
+
+#Para el caso donde no hubo ningún grupo disponible hasta orden, se usa Clase o Phylum.
+=SI(LARGO(P2)>0,P2,(SI(LARGO(J2)>0,J2,I2)))
+
+#Concatenamos la columna anterior con los "Unid_", "_sp" , según corresponda.
+=SI(O2="Unid_",CONCAT(O2,Q2),CONCAT(Q2,O2))
