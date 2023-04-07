@@ -1,16 +1,16 @@
 # Microbiome of Pepper
-Data (raw, transformed, and subsets) used in "Root-soil interactions for pepper accessions grown under organic and conventional farming" paper analysis and scripts for corelation and exploratory factor analysis analysis in R language
+Here you can find plugins and data obtained from different analysis. The spreadsheet_funct.txt file has the formulas used to filter taxa assignation tags.
 DOI: UNPUBLISHED
 
 
 
-## Bacterial and Fungal data
+## Full Bacterial and Fungal Species
 
-Here you can find full data set (FULL_DATA.csv) and two directories: Correlations and EFA.
+Here you can find full list of Bacterial and Fungal taxa at species level (or closer higher taxonomic level) identified with sample coding, and plant related traits also measured.
 
-### Core taxa
+### Core Taxa and bubbleplots
 
-Here you can find data files, full resolution figures used (Figure2.svg, Figure2_ORG_T2_full.svg, Figure2_CON_T2_full.svg, Figure2_ORG_T1_full.svg, Figure2_CON_T1_full.svg), and R script used for correlation analysis and create high resolution SVG images of each.
+Here you can find Python and R scripts to obtain prevalence (percentage) of each taxon in the sample set queried, to obtain abundance and relative abundance of core taxa of the sample set queried (plugin_percentage.py), and to create bubbleplots in which mean relative abundance is in "X" axis (plugin_core_abund_nd_relabund.py), different taxa in alphabetical order in "Y" axis and token size reflects the raw abundance of each taxon (blubbleplot_improved.R). Also, you can find the full list of core taxa for each set of samples obtained with prevalence, mean relative abundance, and comparison with Simonin et al. (2020) findings (CORE_TAXA.csv). 
 
 ## License
 
