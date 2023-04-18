@@ -1,5 +1,7 @@
 # Microbiome of Pepper
-Here you can find plugins and data obtained from different analysis. The spreadsheet_funct.txt file has the formulas used to filter taxa assignation tags.
+Here you can find plugins and data obtained from different analysis. 
+The tables containing the statistically significant results of the analysis of the effect on the morphological and chemical traits of the evaluated plant material of treatment and Capsicum spp is named KRUSKALW_VAR_VEG_TRAT_SPP.csv, and for accessions is named KRUSKALW_VAR_VEG_ACCESIONES.csv.
+The spreadsheet_funct.txt file has the formulas used to filter taxa assignation tags.
 
 DOI: UNPUBLISHED
 
